@@ -44,7 +44,7 @@ def create_url():
         new_url = generate_random_string(7)
         url_entry = URL(original_url=original_url, short_url=new_url)
     elif url_type == 'long':
-        length = min(int(data['length']), 2048)  # Limit max length to 2048 characters
+        length = min(int(data['length']), 2000)  # Limit max length to 2000 characters
         long_url = generate_random_string(length)
         short_url = generate_random_string(7)
         url_entry = URL(original_url=original_url, short_url=short_url, long_url=long_url)
@@ -54,7 +54,12 @@ def create_url():
     db.session.add(url_entry)
     db.session.commit()
     
-    return jsonify({'new_url': f'/redi/{short_url if url_type == "short" else long_url}'})
+    if url_type == 'short':
+        new_url = url_entry.short_url
+    else:
+        new_url = url_entry.long_url
+    
+    return jsonify({'new_url': f'/redi/{new_url}'})
 
 @app.route('/redi/<string:url_key>')
 def redirect_url(url_key):
