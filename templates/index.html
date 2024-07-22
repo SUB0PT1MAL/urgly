@@ -17,15 +17,7 @@
             <label>
                 <input type="radio" name="urlType" value="long"> Long URL
             </label>
-            <div id="sliderContainer" class="slider-container" style="display:none;">
-                <input type="range" id="longLengthSlider" min="100" max="2048" value="100" step="1">
-                <div class="slider-labels">
-                    <span>100</span>
-                    <span id="twitchChatLabel" style="position: absolute; left: 50%; transform: translateX(-50%);">Twitch chat</span>
-                    <span>2048</span>
-                </div>
-                <p id="selectedLength">Selected length: 100</p>
-            </div>
+            <input type="number" id="longLength" placeholder="Length for long URL" disabled>
         </div>
         <button onclick="processUrl()">Generate URL</button>
         <div id="result"></div>
