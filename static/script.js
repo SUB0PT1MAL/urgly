@@ -15,15 +15,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     urlLengthSlider.addEventListener('input', function() {
         urlLengthInput.value = this.value;
+        updateSliderColor(this.value);
     });
 
     urlLengthInput.addEventListener('input', function() {
         let value = parseInt(this.value);
-        if (value < 34) value = 34;
-        if (value > 2034) value = 2034;
+        if (value < 100) value = 100;
+        if (value > 2048) value = 2048;
         this.value = value;
         urlLengthSlider.value = value;
+        updateSliderColor(value);
     });
+
+    function updateSliderColor(value) {
+        const percentage = (value - 100) / (2048 - 100) * 100;
+        urlLengthSlider.style.background = `linear-gradient(to right, #4CAF50 0%, #4CAF50 ${percentage}%, #3a3a3a ${percentage}%, #3a3a3a 100%)`;
+    }
+
+    // Initialize slider color
+    updateSliderColor(urlLengthSlider.value);
 });
 
 async function processUrl() {
@@ -39,7 +49,7 @@ async function processUrl() {
     const data = {
         url: originalUrl,
         type: urlType,
-        length: urlType === 'long' ? parseInt(urlLength) - 34 : undefined
+        length: urlType === 'long' ? parseInt(urlLength) : undefined
     };
 
     try {

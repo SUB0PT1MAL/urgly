@@ -10,18 +10,21 @@
     <div class="container">
         <h1>URL Shortener</h1>
         <input type="text" id="originalUrl" placeholder="Enter URL to shorten">
-        <div>
+        <div class="radio-group">
             <input type="radio" id="shortUrl" name="urlType" value="short" checked>
             <label for="shortUrl">Short URL</label>
             <input type="radio" id="longUrl" name="urlType" value="long">
             <label for="longUrl">Long URL</label>
         </div>
         <div id="longUrlControls" style="display: none;">
-            <input type="range" id="urlLengthSlider" min="34" max="2034" value="500">
-            <input type="number" id="urlLengthInput" min="34" max="2034" value="500">
+            <div class="slider-container">
+                <input type="number" id="urlLengthInput" min="100" max="2048" value="500">
+                <input type="range" id="urlLengthSlider" min="100" max="2048" value="500">
+            </div>
             <div id="sliderMilestones">
-                <span style="left: 22.9%;">Twitch (500)</span>
-                <span style="left: 97.4%;">Discord (2000)</span>
+                <span class="milestone" style="left: 19.5%;">500</span>
+                <span class="milestone" style="left: 58.5%;">1274</span>
+                <span class="milestone" style="left: 97.4%;">2048</span>
             </div>
         </div>
         <button onclick="processUrl()">Create URL</button>

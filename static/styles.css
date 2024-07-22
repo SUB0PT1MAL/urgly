@@ -5,14 +5,15 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
 }
 
 .container {
-    background-color: white;
+    background-color: #2a2a2a;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
     width: 80%;
     max-width: 500px;
 }
@@ -22,6 +23,15 @@ input[type="text"], input[type="number"], button {
     padding: 0.5rem;
     margin: 0.5rem 0;
     box-sizing: border-box;
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: 1px solid #4a4a4a;
+    border-radius: 4px;
+}
+
+input[type="number"] {
+    width: 60px;
+    margin-right: 10px;
 }
 
 button {
@@ -29,6 +39,7 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:hover {
@@ -44,8 +55,14 @@ button:hover {
     margin: 1rem 0;
 }
 
+.slider-container {
+    display: flex;
+    align-items: center;
+}
+
 #urlLengthSlider {
-    width: 100%;
+    flex-grow: 1;
+    margin-left: 10px;
 }
 
 #sliderMilestones {
@@ -54,8 +71,18 @@ button:hover {
     margin-top: 5px;
 }
 
-#sliderMilestones span {
+.milestone {
     position: absolute;
     font-size: 0.8em;
     transform: translateX(-50%);
+}
+
+.radio-group {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
 }
