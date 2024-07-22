@@ -18,9 +18,9 @@ db = SQLAlchemy(app)
 
 class URL(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    original_url = db.Column(db.String(2048), nullable=False)
-    short_url = db.Column(db.String(10), unique=True, nullable=False)
-    long_url = db.Column(db.String(2048), unique=True, nullable=True)
+    original_url = db.Column(db.Text, nullable=False)
+    short_url = db.Column(db.String(255), unique=True, nullable=False)
+    long_url = db.Column(db.Text, unique=True, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 def generate_random_string(length):
@@ -44,16 +44,17 @@ def create_url():
         new_url = generate_random_string(7)
         url_entry = URL(original_url=original_url, short_url=new_url)
     elif url_type == 'long':
-        length = data['length']
-        new_url = generate_random_string(int(length))
-        url_entry = URL(original_url=original_url, short_url=new_url, long_url=new_url)
+        length = min(int(data['length']), 2048)  # Limit max length to 2048 characters
+        long_url = generate_random_string(length)
+        short_url = generate_random_string(7)
+        url_entry = URL(original_url=original_url, short_url=short_url, long_url=long_url)
     else:
         return jsonify({'error': 'Invalid URL type'}), 400
 
     db.session.add(url_entry)
     db.session.commit()
     
-    return jsonify({'new_url': f'/redi/{new_url}'})
+    return jsonify({'new_url': f'/redi/{short_url if url_type == "short" else long_url}'})
 
 @app.route('/redi/<string:url_key>')
 def redirect_url(url_key):
