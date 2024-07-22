@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 import random
 import string
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates', static_folder='static')
 
 # Database configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
