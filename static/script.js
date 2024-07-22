@@ -20,11 +20,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     urlLengthInput.addEventListener('input', function() {
         let value = parseInt(this.value);
-        if (value < 100) value = 100;
+        if (isNaN(value) || value < 100) value = 100;
         if (value > 2048) value = 2048;
         this.value = value;
         urlLengthSlider.value = value;
         updateSliderColor(value);
+    });
+
+    urlLengthInput.addEventListener('blur', function() {
+        if (this.value === '') {
+            this.value = 100;
+            urlLengthSlider.value = 100;
+            updateSliderColor(100);
+        }
     });
 
     function updateSliderColor(value) {
