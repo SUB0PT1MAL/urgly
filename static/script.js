@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     const longOption = document.querySelector('input[value="long"]');
-    const shortOption = document.querySelector('input[value="short"]');
     const sliderContainer = document.getElementById('sliderContainer');
     const longLengthSlider = document.getElementById('longLengthSlider');
     const selectedLengthDisplay = document.getElementById('selectedLength');
