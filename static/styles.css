@@ -59,3 +59,22 @@ button:hover {
     border-radius: 4px;
     word-break: break-all;
 }
+
+.slider-container {
+    margin: 20px 0;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#twitchChatLabel {
+    color: #ff4500;
+    font-weight: bold;
+}
+
+#selectedLength {
+    margin-top: 10px;
+}
