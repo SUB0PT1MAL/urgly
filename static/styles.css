@@ -19,7 +19,7 @@ h1 {
     color: #333;
 }
 
-input[type="text"], input[type="number"] {
+input[type="text"], input[type="number"], input[type="range"] {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -78,12 +78,13 @@ input[type="range"] {
 #twitchChatLabel {
     color: #ff4500;
     font-weight: bold;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 #selectedLength {
     margin-top: 10px;
     text-align: center;
+}
+
+#manualLengthInput {
+    margin-top: 10px;
 }
