@@ -46,7 +46,7 @@ def create_url():
     elif url_type == 'long':
         length = data['length']
         new_url = generate_random_string(int(length))
-        url_entry = URL(original_url=original_url, long_url=new_url)
+        url_entry = URL(original_url=original_url, short_url=new_url, long_url=new_url)
     else:
         return jsonify({'error': 'Invalid URL type'}), 400
 
