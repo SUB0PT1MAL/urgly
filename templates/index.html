@@ -3,23 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Shortener/Elongator</title>
+    <title>URL Shortener</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>URL Shortener/Elongator</h1>
-        <input type="text" id="originalUrl" placeholder="Enter URL to shorten/elongate">
-        <div class="options">
-            <label>
-                <input type="radio" name="urlType" value="short" checked> Short URL
-            </label>
-            <label>
-                <input type="radio" name="urlType" value="long"> Long URL
-            </label>
-            <input type="number" id="longLength" placeholder="Length for long URL" disabled>
+        <h1>URL Shortener</h1>
+        <input type="text" id="originalUrl" placeholder="Enter URL to shorten">
+        <div>
+            <input type="radio" id="shortUrl" name="urlType" value="short" checked>
+            <label for="shortUrl">Short URL</label>
+            <input type="radio" id="longUrl" name="urlType" value="long">
+            <label for="longUrl">Long URL</label>
         </div>
-        <button onclick="processUrl()">Generate URL</button>
+        <div id="longUrlControls" style="display: none;">
+            <input type="range" id="urlLengthSlider" min="34" max="2034" value="500">
+            <input type="number" id="urlLengthInput" min="34" max="2034" value="500">
+            <div id="sliderMilestones">
+                <span style="left: 22.9%;">Twitch (500)</span>
+                <span style="left: 97.4%;">Discord (2000)</span>
+            </div>
+        </div>
+        <button onclick="processUrl()">Create URL</button>
         <div id="result"></div>
     </div>
     <script src="/static/script.js"></script>

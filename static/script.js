@@ -1,35 +1,45 @@
 document.addEventListener('DOMContentLoaded', function() {
     const longOption = document.querySelector('input[value="long"]');
-    const longLength = document.getElementById('longLength');
+    const shortOption = document.querySelector('input[value="short"]');
+    const longUrlControls = document.getElementById('longUrlControls');
+    const urlLengthSlider = document.getElementById('urlLengthSlider');
+    const urlLengthInput = document.getElementById('urlLengthInput');
 
-    function toggleLongLength() {
-        longLength.disabled = !longOption.checked;
+    function toggleLongUrlControls() {
+        longUrlControls.style.display = longOption.checked ? 'block' : 'none';
     }
 
-    document.querySelectorAll('input[name="urlType"]').forEach(radio => {
-        radio.addEventListener('change', toggleLongLength);
+    [longOption, shortOption].forEach(radio => {
+        radio.addEventListener('change', toggleLongUrlControls);
+    });
+
+    urlLengthSlider.addEventListener('input', function() {
+        urlLengthInput.value = this.value;
+    });
+
+    urlLengthInput.addEventListener('input', function() {
+        let value = parseInt(this.value);
+        if (value < 34) value = 34;
+        if (value > 2034) value = 2034;
+        this.value = value;
+        urlLengthSlider.value = value;
     });
 });
 
 async function processUrl() {
     const originalUrl = document.getElementById('originalUrl').value;
     const urlType = document.querySelector('input[name="urlType"]:checked').value;
-    const length = document.getElementById('longLength').value;
+    const urlLength = document.getElementById('urlLengthInput').value;
 
     if (!originalUrl) {
         alert('Please enter a URL');
         return;
     }
 
-    if (urlType === 'long' && !length) {
-        alert('Please enter a length for the long URL');
-        return;
-    }
-
     const data = {
         url: originalUrl,
         type: urlType,
-        length: urlType === 'long' ? parseInt(length) : undefined
+        length: urlType === 'long' ? parseInt(urlLength) - 34 : undefined
     };
 
     try {
