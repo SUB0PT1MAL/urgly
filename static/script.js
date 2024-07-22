@@ -2,21 +2,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const longOption = document.querySelector('input[value="long"]');
     const sliderContainer = document.getElementById('sliderContainer');
     const longLengthSlider = document.getElementById('longLengthSlider');
-    const manualLengthInput = document.getElementById('manualLengthInput');
     const selectedLengthDisplay = document.getElementById('selectedLength');
-    const baseUrlLength = 34;  // Length of "https://urgly.sub0pt1mal.com/redi/"
-    
+    const baseUrl = "https://urgly.sub0pt1mal.com/redi/";
+
     function updateSelectedLength() {
         const totalLength = parseInt(longLengthSlider.value);
-        const effectiveLength = totalLength - baseUrlLength;
         selectedLengthDisplay.textContent = `Selected length: ${totalLength}`;
-        manualLengthInput.value = totalLength;
-    }
-
-    function updateSliderLength() {
-        const manualLength = parseInt(manualLengthInput.value);
-        longLengthSlider.value = manualLength;
-        updateSelectedLength();
     }
 
     function toggleSlider() {
@@ -31,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     longLengthSlider.addEventListener('input', updateSelectedLength);
-    manualLengthInput.addEventListener('input', updateSliderLength);
 
     async function processUrl() {
         const originalUrl = document.getElementById('originalUrl').value;
@@ -45,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (urlType === 'long') {
             const fullUrlLength = parseInt(length);
+            const baseUrlLength = baseUrl.length;
             const requiredLength = fullUrlLength - baseUrlLength;
 
             if (requiredLength <= 0) {
@@ -56,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const data = {
             url: originalUrl,
             type: urlType,
-            length: urlType === 'long' ? parseInt(length) - baseUrlLength : undefined
+            length: urlType === 'long' ? parseInt(length) : undefined
         };
 
         try {
