@@ -5,9 +5,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlLengthSlider = document.getElementById('urlLengthSlider');
     const urlLengthInput = document.getElementById('urlLengthInput');
     const milestones = document.querySelectorAll('.milestone');
+    
+    // Create URL preview element
+    const urlPreview = document.createElement('div');
+    urlPreview.id = 'urlPreview';
+    longUrlControls.insertBefore(urlPreview, longUrlControls.firstChild);
 
     function updateLongUrlControls() {
         longUrlControls.classList.toggle('inactive', shortUrlBtn.classList.contains('active'));
+        updateUrlPreview();
     }
 
     shortUrlBtn.addEventListener('click', function() {
@@ -26,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         urlLengthInput.value = this.value;
         updateSliderColor(this.value);
         updateMilestones(this.value);
+        updateUrlPreview();
     });
 
     urlLengthInput.addEventListener('input', function() {
@@ -35,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             urlLengthSlider.value = value;
             updateSliderColor(value);
             updateMilestones(value);
+            updateUrlPreview();
         }
     });
 
@@ -49,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         urlLengthSlider.value = value;
         updateSliderColor(value);
         updateMilestones(value);
+        updateUrlPreview();
     });
 
     urlLengthInput.addEventListener('keypress', function(e) {
@@ -72,6 +81,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function updateUrlPreview() {
+        if (longUrlBtn.classList.contains('active')) {
+            const length = parseInt(urlLengthInput.value) - 34; // Subtract 34 for the base URL
+            urlPreview.textContent = '█'.repeat(length);
+            urlPreview.style.display = 'block';
+        } else {
+            urlPreview.style.display = 'none';
+        }
+    }
+
     milestones.forEach(milestone => {
         milestone.addEventListener('click', function() {
             const value = parseInt(this.dataset.value);
@@ -79,16 +98,18 @@ document.addEventListener('DOMContentLoaded', function() {
             urlLengthInput.value = value;
             updateSliderColor(value);
             updateMilestones(value);
+            updateUrlPreview();
         });
     });
 
     updateSliderColor(urlLengthSlider.value);
     updateMilestones(urlLengthSlider.value);
     updateLongUrlControls();
+    updateUrlPreview();
 });
 
 function autoResizeTextarea(textarea) {
-    textarea.style.height = 'auto'; 
+    textarea.style.height = 'auto';
     textarea.style.height = textarea.scrollHeight + 'px';
 }
 
@@ -103,7 +124,7 @@ async function processUrl() {
     }
 
     if (urlType === 'long') {
-        urlLength = Math.max(100, parseInt(urlLength) - 34); // Subtract 34 from the length, but ensure it's at least 100
+        urlLength = Math.max(100, parseInt(urlLength) - 34);
     }
 
     const data = {
