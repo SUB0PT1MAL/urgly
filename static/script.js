@@ -82,11 +82,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Initialize slider color, milestones, and long URL controls
     updateSliderColor(urlLengthSlider.value);
     updateMilestones(urlLengthSlider.value);
     updateLongUrlControls();
 });
+
+function autoResizeTextarea(textarea) {
+    textarea.style.height = 'auto'; 
+    textarea.style.height = textarea.scrollHeight + 'px';
+}
 
 async function processUrl() {
     const originalUrl = document.getElementById('originalUrl').value;
@@ -123,8 +127,7 @@ async function processUrl() {
         const fullUrl = `${window.location.protocol}//${window.location.host}${result.new_url}`;
         const generatedUrlTextarea = document.getElementById('generatedUrl');
         generatedUrlTextarea.value = fullUrl;
-       //generatedUrlTextarea.style.height = 'auto';
-       //generatedUrlTextarea.style.height = generatedUrlTextarea.scrollHeight + 'px';
+        autoResizeTextarea(generatedUrlTextarea);
         document.getElementById('result').style.display = 'flex';
     } catch (error) {
         console.error('Error:', error);
