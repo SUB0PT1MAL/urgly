@@ -113,9 +113,10 @@ input[type="range"]::-moz-range-thumb {
 #milestones {
     list-style-type: none;
     padding: 0;
-    margin: 0;
+    margin: 0.5rem 0 0 0;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .milestone {
@@ -124,6 +125,7 @@ input[type="range"]::-moz-range-thumb {
     transition: color 0.3s, opacity 0.3s;
     cursor: pointer;
     opacity: 0.5;
+    margin-bottom: 0.5rem;
 }
 
 .milestone.active {
