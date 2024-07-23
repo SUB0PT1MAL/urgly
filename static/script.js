@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateMilestones(value) {
         milestones.forEach(milestone => {
-            if (parseInt(milestone.dataset.value) <= parseInt(value)) {
+            if (parseInt(milestone.dataset.value) === parseInt(value)) {
                 milestone.classList.add('active');
             } else {
                 milestone.classList.remove('active');
@@ -108,9 +108,17 @@ async function processUrl() {
             throw new Error(result.error);
         }
         const fullUrl = `${window.location.protocol}//${window.location.host}${result.new_url}`;
-        document.getElementById('result').innerHTML = `Your new URL: <a href="${fullUrl}" target="_blank">${fullUrl}</a>`;
+        document.getElementById('generatedUrl').value = fullUrl;
+        document.getElementById('result').style.display = 'flex';
     } catch (error) {
         console.error('Error:', error);
         alert('An error occurred. Please try again.');
     }
+}
+
+function copyToClipboard() {
+    const generatedUrl = document.getElementById('generatedUrl');
+    generatedUrl.select();
+    document.execCommand('copy');
+    alert('URL copied to clipboard!');
 }
