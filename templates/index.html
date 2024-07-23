@@ -3,35 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Shortener</title>
+    <title>C64 URL Shortener</title>
     <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>URL Shortener</h1>
-        <input type="text" id="originalUrl" placeholder="Enter URL to shorten">
-        <div class="radio-group">
-            <input type="radio" id="shortUrl" name="urlType" value="short" checked>
-            <label for="shortUrl">Short URL</label>
-            <input type="radio" id="longUrl" name="urlType" value="long">
-            <label for="longUrl">Long URL</label>
-        </div>
-        <div id="longUrlControls" style="display:">
-            <div class="slider-container">
-                <input type="number" id="urlLengthInput" value="500">
-                <input type="range" id="urlLengthSlider" min="100" max="2000" value="500">
+    <div class="screen">
+        <div class="container">
+            <h1>**** C64 URL SHORTENER V1.0 ****</h1>
+            <p>64K RAM SYSTEM  38911 BASIC BYTES FREE</p>
+            <p>READY.</p>
+            <input type="text" id="originalUrl" placeholder="ENTER URL TO SHORTEN">
+            <div class="radio-group">
+                <input type="radio" id="shortUrl" name="urlType" value="short" checked>
+                <label for="shortUrl">SHORT URL</label>
+                <input type="radio" id="longUrl" name="urlType" value="long">
+                <label for="longUrl">LONG URL</label>
             </div>
-            <ul id="milestones">
-                <li class="milestone" data-value="100">Minimum</li>
-                <li class="milestone" data-value="280">Twitter</li>
-                <li class="milestone" data-value="500">Twitch Chat</li>
-                <li class="milestone" data-value="2000">Discord Chat</li>
-            </ul>
-        </div>
-        <button onclick="processUrl()">Create URL</button>
-        <div id="result">
-            <input type="text" id="generatedUrl" readonly>
-            <button id="copyButton" onclick="copyToClipboard()">Copy</button>
+            <div id="longUrlControls">
+                <div class="slider-container">
+                    <input type="number" id="urlLengthInput" value="500">
+                    <input type="range" id="urlLengthSlider" min="100" max="2000" value="500">
+                </div>
+                <ul id="milestones">
+                    <li class="milestone" data-value="100">MINIMUM</li>
+                    <li class="milestone" data-value="280">TWITTER</li>
+                    <li class="milestone" data-value="500">TWITCH CHAT</li>
+                    <li class="milestone" data-value="2000">DISCORD CHAT</li>
+                </ul>
+            </div>
+            <button onclick="processUrl()">CREATE URL</button>
+            <div id="result">
+                <input type="text" id="generatedUrl" readonly>
+                <button id="copyButton" onclick="copyToClipboard()">COPY</button>
+            </div>
         </div>
     </div>
     <script src="/static/script.js"></script>
