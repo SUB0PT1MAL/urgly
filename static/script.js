@@ -56,13 +56,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateMilestones(value) {
         milestones.forEach(milestone => {
-            if (parseInt(milestone.dataset.value) === parseInt(value)) {
+            if (parseInt(milestone.dataset.value) <= parseInt(value)) {
                 milestone.classList.add('active');
             } else {
                 milestone.classList.remove('active');
             }
         });
     }
+
+    milestones.forEach(milestone => {
+        milestone.addEventListener('click', function() {
+            const value = parseInt(this.dataset.value);
+            urlLengthSlider.value = value;
+            urlLengthInput.value = value;
+            updateSliderColor(value);
+            updateMilestones(value);
+        });
+    });
 
     // Initialize slider color and milestones
     updateSliderColor(urlLengthSlider.value);

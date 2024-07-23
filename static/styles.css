@@ -100,6 +100,8 @@ input[type="range"]::-moz-range-thumb {
 }
 
 #milestones {
+    list-style-type: none;
+    padding: 0;
     display: flex;
     justify-content: space-between;
     margin-top: 5px;
@@ -108,12 +110,15 @@ input[type="range"]::-moz-range-thumb {
 .milestone {
     font-size: 0.8em;
     color: #888;
-    transition: color 0.3s;
+    transition: color 0.3s, opacity 0.3s;
+    cursor: pointer;
+    opacity: 0.5;
 }
 
 .milestone.active {
     color: #1e90ff;
     font-weight: bold;
+    opacity: 1;
 }
 
 .radio-group {
