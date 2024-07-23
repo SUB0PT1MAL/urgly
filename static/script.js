@@ -123,8 +123,8 @@ async function processUrl() {
         const fullUrl = `${window.location.protocol}//${window.location.host}${result.new_url}`;
         const generatedUrlTextarea = document.getElementById('generatedUrl');
         generatedUrlTextarea.value = fullUrl;
-        generatedUrlTextarea.style.height = 'auto';
-        generatedUrlTextarea.style.height = generatedUrlTextarea.scrollHeight + 'px';
+       //generatedUrlTextarea.style.height = 'auto';
+       //generatedUrlTextarea.style.height = generatedUrlTextarea.scrollHeight + 'px';
         document.getElementById('result').style.display = 'flex';
     } catch (error) {
         console.error('Error:', error);

@@ -39,8 +39,8 @@ input[type="text"], input[type="number"], button, textarea {
 }
 
 input[type="number"] {
-    width: 100px;
-    text-align: right;
+    width: 80px;
+    text-align: center;
     padding-right: 5px;
     -moz-appearance: textfield; /* Firefox */
 }
@@ -55,8 +55,8 @@ input[type="number"]::-webkit-inner-spin-button {
 textarea {
     resize: vertical;
     min-height: 60px;
-    max-height: 200px;
-    overflow-y: auto;
+    overflow-y: hidden; /* Hide the scrollbar */
+    word-wrap: break-word; /* Ensure long words are broken and wrapped */
 }
 
 button {
@@ -73,15 +73,21 @@ button:hover {
 #result {
     margin-top: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Change to row to place copy button on the side */
+    align-items: flex-start; /* Align items to the top */
 }
 
 #generatedUrl {
-    margin-bottom: 10px;
+    flex-grow: 1; /* Allow the textarea to grow and take available space */
+    margin-right: 10px; /* Add some space between textarea and button */
 }
 
 #copyButton {
-    align-self: flex-end;
+    white-space: nowrap; /* Prevent button text from wrapping */
+    align-self: stretch; /* Make the button stretch to match textarea height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #copyButton.copied {
