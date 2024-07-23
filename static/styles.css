@@ -69,6 +69,10 @@ button:hover {
 
 #longUrlControls.inactive {
     opacity: 0.5;
+}
+
+#longUrlControls.inactive input,
+#longUrlControls.inactive #urlLengthSlider {
     pointer-events: none;
 }
 

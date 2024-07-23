@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlLengthInput = document.getElementById('urlLengthInput');
     const milestones = document.querySelectorAll('.milestone');
 
-    function toggleLongUrlControls() {
+    function updateLongUrlControls() {
         longUrlControls.classList.toggle('inactive', !longOption.checked);
     }
 
     [longOption, shortOption].forEach(radio => {
-        radio.addEventListener('change', toggleLongUrlControls);
+        radio.addEventListener('change', updateLongUrlControls);
     });
 
     urlLengthSlider.addEventListener('input', function() {
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize slider color, milestones, and long URL controls
     updateSliderColor(urlLengthSlider.value);
     updateMilestones(urlLengthSlider.value);
-    toggleLongUrlControls();
+    updateLongUrlControls();
 });
 
 async function processUrl() {
