@@ -1,17 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const longOption = document.querySelector('input[value="long"]');
-    const shortOption = document.querySelector('input[value="short"]');
+    const shortUrlBtn = document.getElementById('shortUrlBtn');
+    const longUrlBtn = document.getElementById('longUrlBtn');
     const longUrlControls = document.getElementById('longUrlControls');
     const urlLengthSlider = document.getElementById('urlLengthSlider');
     const urlLengthInput = document.getElementById('urlLengthInput');
     const milestones = document.querySelectorAll('.milestone');
 
     function updateLongUrlControls() {
-        longUrlControls.classList.toggle('inactive', !longOption.checked);
+        longUrlControls.classList.toggle('inactive', shortUrlBtn.classList.contains('active'));
     }
 
-    [longOption, shortOption].forEach(radio => {
-        radio.addEventListener('change', updateLongUrlControls);
+    shortUrlBtn.addEventListener('click', function() {
+        shortUrlBtn.classList.add('active');
+        longUrlBtn.classList.remove('active');
+        updateLongUrlControls();
+    });
+
+    longUrlBtn.addEventListener('click', function() {
+        longUrlBtn.classList.add('active');
+        shortUrlBtn.classList.remove('active');
+        updateLongUrlControls();
     });
 
     urlLengthSlider.addEventListener('input', function() {
@@ -82,18 +90,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function processUrl() {
     const originalUrl = document.getElementById('originalUrl').value;
-    const urlType = document.querySelector('input[name="urlType"]:checked').value;
-    const urlLength = document.getElementById('urlLengthInput').value;
+    const urlType = document.getElementById('longUrlBtn').classList.contains('active') ? 'long' : 'short';
+    let urlLength = document.getElementById('urlLengthInput').value;
 
     if (!originalUrl) {
         alert('Please enter a URL');
         return;
     }
 
+    if (urlType === 'long') {
+        urlLength = Math.max(100, parseInt(urlLength) - 34); // Subtract 34 from the length, but ensure it's at least 100
+    }
+
     const data = {
         url: originalUrl,
         type: urlType,
-        length: urlType === 'long' ? parseInt(urlLength) : undefined
+        length: urlType === 'long' ? urlLength : undefined
     };
 
     try {
@@ -119,7 +131,16 @@ async function processUrl() {
 
 function copyToClipboard() {
     const generatedUrl = document.getElementById('generatedUrl');
+    const copyButton = document.getElementById('copyButton');
+    
     generatedUrl.select();
     document.execCommand('copy');
-    alert('URL copied to clipboard!');
+    
+    copyButton.textContent = 'COPIED';
+    copyButton.classList.add('copied');
+    
+    setTimeout(() => {
+        copyButton.textContent = 'COPY';
+        copyButton.classList.remove('copied');
+    }, 2000);
 }

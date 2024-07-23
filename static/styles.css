@@ -67,6 +67,12 @@ button:hover {
     align-self: flex-end;
 }
 
+#copyButton.copied {
+    background-color: #4040e0;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
 #longUrlControls {
     margin: 20px 0;
     transition: opacity 0.3s;
@@ -114,25 +120,43 @@ button:hover {
     list-style-type: none;
     padding: 0;
     margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 .milestone {
     cursor: pointer;
     margin-bottom: 5px;
+    padding: 5px;
+    border: 2px solid #ffffff;
+    background-color: #4040e0;
+    transition: background-color 0.3s;
+}
+
+.milestone:hover {
+    background-color: #a0a0ff;
 }
 
 .milestone.active {
-    color: #a0a0ff;
+    background-color: #ffffff;
+    color: #4040e0;
 }
 
-.radio-group {
+.button-group {
     display: flex;
     justify-content: space-between;
     margin: 20px 0;
 }
 
-input[type="radio"] {
-    margin-right: 5px;
+.button-group button {
+    flex: 1;
+    margin: 0 5px;
+}
+
+.button-group button.active {
+    background-color: #4040e0;
+    color: #ffffff;
+    border: 2px solid #ffffff;
 }
 
 /* Commodore 64 scanline effect */
