@@ -7,9 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const milestones = document.querySelectorAll('.milestone');
 
     function toggleLongUrlControls() {
-        longUrlControls.classList.toggle('disabled', !longOption.checked);
-        urlLengthSlider.disabled = !longOption.checked;
-        urlLengthInput.disabled = !longOption.checked;
+        longUrlControls.style.display = longOption.checked ? 'block' : 'none';
     }
 
     [longOption, shortOption].forEach(radio => {
@@ -58,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateMilestones(value) {
         milestones.forEach(milestone => {
-            if (parseInt(milestone.dataset.value) === parseInt(value)) {
+            if (parseInt(milestone.dataset.value) <= parseInt(value)) {
                 milestone.classList.add('active');
             } else {
                 milestone.classList.remove('active');
@@ -79,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize slider color and milestones
     updateSliderColor(urlLengthSlider.value);
     updateMilestones(urlLengthSlider.value);
-    toggleLongUrlControls();
 });
 
 async function processUrl() {
