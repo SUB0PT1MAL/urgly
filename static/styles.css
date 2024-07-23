@@ -38,8 +38,15 @@ input[type="text"], input[type="number"], button {
     border: 2px solid #ffffff;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    width: 80px;
+    -webkit-appearance: none;
+    margin: 0;
+}
 input[type="number"] {
     width: 80px;
+    -moz-appearance: textfield;
 }
 
 button {
