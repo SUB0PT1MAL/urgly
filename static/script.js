@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const longUrlControls = document.getElementById('longUrlControls');
     const urlLengthSlider = document.getElementById('urlLengthSlider');
     const urlLengthInput = document.getElementById('urlLengthInput');
+    const milestones = document.querySelectorAll('.milestone');
 
     function toggleLongUrlControls() {
         longUrlControls.style.display = longOption.checked ? 'block' : 'none';
@@ -16,32 +17,56 @@ document.addEventListener('DOMContentLoaded', function() {
     urlLengthSlider.addEventListener('input', function() {
         urlLengthInput.value = this.value;
         updateSliderColor(this.value);
+        updateMilestones(this.value);
     });
 
     urlLengthInput.addEventListener('input', function() {
-        let value = parseInt(this.value);
-        if (isNaN(value) || value < 100) value = 100;
-        if (value > 2048) value = 2048;
-        this.value = value;
-        urlLengthSlider.value = value;
-        updateSliderColor(value);
+        let value = this.value;
+        if (value !== '') {
+            value = parseInt(value);
+            urlLengthSlider.value = value;
+            updateSliderColor(value);
+            updateMilestones(value);
+        }
     });
 
     urlLengthInput.addEventListener('blur', function() {
-        if (this.value === '') {
-            this.value = 100;
-            urlLengthSlider.value = 100;
-            updateSliderColor(100);
+        let value = parseInt(this.value);
+        if (isNaN(value) || value < 100) {
+            value = 100;
+        } else if (value > 2048) {
+            value = 2048;
+        }
+        this.value = value;
+        urlLengthSlider.value = value;
+        updateSliderColor(value);
+        updateMilestones(value);
+    });
+
+    urlLengthInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            this.blur();
         }
     });
 
     function updateSliderColor(value) {
         const percentage = (value - 100) / (2048 - 100) * 100;
-        urlLengthSlider.style.background = `linear-gradient(to right, #4CAF50 0%, #4CAF50 ${percentage}%, #3a3a3a ${percentage}%, #3a3a3a 100%)`;
+        urlLengthSlider.style.background = `linear-gradient(to right, #1e90ff 0%, #1e90ff ${percentage}%, #3a3a3a ${percentage}%, #3a3a3a 100%)`;
     }
 
-    // Initialize slider color
+    function updateMilestones(value) {
+        milestones.forEach(milestone => {
+            if (parseInt(milestone.dataset.value) === parseInt(value)) {
+                milestone.classList.add('active');
+            } else {
+                milestone.classList.remove('active');
+            }
+        });
+    }
+
+    // Initialize slider color and milestones
     updateSliderColor(urlLengthSlider.value);
+    updateMilestones(urlLengthSlider.value);
 });
 
 async function processUrl() {

@@ -18,16 +18,14 @@
         </div>
         <div id="longUrlControls" style="display: none;">
             <div class="slider-container">
-                <input type="number" id="urlLengthInput" min="100" max="2048" value="500">
-                <div class="slider-wrapper">
-                    <input type="range" id="urlLengthSlider" min="100" max="2048" value="500" list="milestones">
-                    <datalist id="milestones">
-                        <option value="100" label="100"></option>
-                        <option value="500" label="500"></option>
-                        <option value="1274" label="1274"></option>
-                        <option value="2048" label="2048"></option>
-                    </datalist>
-                </div>
+                <input type="number" id="urlLengthInput" value="500">
+                <input type="range" id="urlLengthSlider" min="100" max="2048" value="500">
+            </div>
+            <div id="milestones">
+                <span class="milestone" data-value="100">100</span>
+                <span class="milestone" data-value="500">500</span>
+                <span class="milestone" data-value="1274">1274</span>
+                <span class="milestone" data-value="2048">2048</span>
             </div>
         </div>
         <button onclick="processUrl()">Create URL</button>
