@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let value = parseInt(this.value);
         if (isNaN(value) || value < 100) {
             value = 100;
-        } else if (value > 2048) {
-            value = 2048;
+        } else if (value > 2000) {
+            value = 2000;
         }
         this.value = value;
         urlLengthSlider.value = value;
@@ -50,13 +50,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function updateSliderColor(value) {
-        const percentage = (value - 100) / (2048 - 100) * 100;
+        const percentage = (value - 100) / (2000 - 100) * 100;
         urlLengthSlider.style.background = `linear-gradient(to right, #1e90ff 0%, #1e90ff ${percentage}%, #3a3a3a ${percentage}%, #3a3a3a 100%)`;
     }
 
     function updateMilestones(value) {
         milestones.forEach(milestone => {
-            if (parseInt(milestone.dataset.value) === parseInt(value)) {
+            if (parseInt(milestone.dataset.value) <= parseInt(value)) {
                 milestone.classList.add('active');
             } else {
                 milestone.classList.remove('active');
