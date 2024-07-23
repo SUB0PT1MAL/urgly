@@ -52,13 +52,6 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 0;
 }
 
-textarea {
-    resize: vertical;
-    min-height: 60px;
-    overflow-y: hidden;
-    word-wrap: break-word;
-}
-
 button {
     background-color: #ffffff;
     color: #4040e0;
@@ -68,6 +61,14 @@ button {
 
 button:hover {
     background-color: #a0a0ff;
+}
+
+textarea {
+    resize: none;
+    overflow: hidden;
+    min-height: 60px;
+    word-wrap: break-word;
+    box-sizing: border-box;
 }
 
 #result {
@@ -84,13 +85,14 @@ button:hover {
 
 #copyButton {
     white-space: nowrap;
-    align-self: stretch;
+    align-self: flex-start;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 90px;
     min-width: 90px;
-    padding: 10px 5px; 
+    padding: 10px 5px;
+    height: 60px;
 }
 
 #copyButton.copied {
