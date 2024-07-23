@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const milestones = document.querySelectorAll('.milestone');
 
     function toggleLongUrlControls() {
-        longUrlControls.style.opacity = longOption.checked ? '1' : '0.5';
-        longUrlControls.style.pointerEvents = longOption.checked ? 'auto' : 'none';
+        longUrlControls.classList.toggle('inactive', !longOption.checked);
     }
 
     [longOption, shortOption].forEach(radio => {

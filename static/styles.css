@@ -64,6 +64,12 @@ button:hover {
 
 #longUrlControls {
     margin: 1rem 0;
+    transition: opacity 0.3s;
+}
+
+#longUrlControls.inactive {
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 .slider-container {
@@ -111,7 +117,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 #milestones {
-    list-style-type: none;
+    list-style-type: square;
     padding: 0;
     margin: 0.5rem 0 0 0;
     display: flex;
