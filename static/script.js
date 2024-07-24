@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlLengthSlider = document.getElementById('urlLengthSlider');
     const urlLengthInput = document.getElementById('urlLengthInput');
     const milestones = document.querySelectorAll('.milestone');
+    const originalUrlInput = document.getElementById('originalUrl');
     
-    // Create URL preview element
     const urlPreview = document.createElement('div');
     urlPreview.id = 'urlPreview';
     longUrlControls.insertBefore(urlPreview, longUrlControls.firstChild);
@@ -82,12 +82,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateUrlPreview() {
+        const baseUrl = "https://urgly.sub0pt1mal.com/redi/";
         if (longUrlBtn.classList.contains('active')) {
-            const length = parseInt(urlLengthInput.value) - 34; // Subtract 34 for the base URL
-            urlPreview.textContent = '█'.repeat(length);
+            const length = parseInt(urlLengthInput.value);
+            const previewLength = Math.max(0, length - baseUrl.length);
+            urlPreview.textContent = baseUrl + '█'.repeat(previewLength);
             urlPreview.style.display = 'block';
         } else {
-            urlPreview.style.display = 'none';
+            urlPreview.textContent = baseUrl;
+            urlPreview.style.display = 'block';
         }
     }
 
@@ -102,11 +105,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    originalUrlInput.addEventListener('input', function() {
+        if (this.value) {
+            urlPreview.style.display = 'none';
+        } else {
+            updateUrlPreview();
+        }
+    });
+
     updateSliderColor(urlLengthSlider.value);
     updateMilestones(urlLengthSlider.value);
     updateLongUrlControls();
     updateUrlPreview();
 });
+
 
 function autoResizeTextarea(textarea) {
     textarea.style.height = 'auto';
@@ -124,7 +136,7 @@ async function processUrl() {
     }
 
     if (urlType === 'long') {
-        urlLength = Math.max(100, parseInt(urlLength) - 34);
+        urlLength = Math.max(100, parseInt(urlLength) - 34); // substract 34 to take in to account the domain and path
     }
 
     const data = {
