@@ -88,7 +88,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (longUrlBtn.classList.contains('active')) {
             const length = parseInt(urlLengthInput.value);
             const previewLength = Math.max(0, length - baseUrl.length);
-            urlPreview.textContent = baseUrl + '█'.repeat(previewLength);
+            //urlPreview.textContent = baseUrl + '█'.repeat(previewLength);
+            urlPreview.textContent = baseUrl + 'X'.repeat(previewLength);
         } else {
             urlPreview.textContent = baseUrl;
         }
