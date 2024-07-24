@@ -76,6 +76,7 @@ textarea {
     width: 100%;
     padding: 10px;
     margin: 1px 0;
+    font-size: 16px;
     box-sizing: border-box;
     background-color: #4040e0;
     color: #ffffff;
@@ -114,7 +115,6 @@ textarea {
     line-height: 1.5;
     white-space: pre-wrap;
     word-break: break-all;
-    background-color: #4040e0;
     border: 2px solid #ffffff;
 }
 
