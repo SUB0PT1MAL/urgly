@@ -87,7 +87,6 @@ textarea {
     color: transparent;
 }
 
-
 #result {
     margin-top: 20px;
     display: flex;
@@ -98,7 +97,7 @@ textarea {
 
 #generatedUrl, #urlPreview {
     flex-grow: 1;
-    margin-right: 100px;
+    margin-right: 100px; /* Leave space for the copy button */
     position: relative;
     min-height: 60px;
     resize: none;
@@ -119,11 +118,6 @@ textarea {
 #urlPreview {
     color: rgba(255, 255, 255, 0.3);
     pointer-events: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 100px;
-    bottom: 0;
     z-index: 1;
 }
 
