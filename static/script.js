@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const urlPreview = document.createElement('div');
     urlPreview.id = 'urlPreview';
-    longUrlControls.insertBefore(urlPreview, longUrlControls.firstChild);
+    originalUrlInput.parentNode.insertBefore(urlPreview, originalUrlInput.nextSibling);
 
     function updateLongUrlControls() {
         longUrlControls.classList.toggle('inactive', shortUrlBtn.classList.contains('active'));
