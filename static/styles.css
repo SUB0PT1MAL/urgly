@@ -84,7 +84,7 @@ textarea {
 }
 
 #originalUrl::placeholder {
-    color: transparent;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 #result {
@@ -226,7 +226,7 @@ textarea {
 
 .button-group button {
     flex: 1;
-    margin: 0 5px;
+    margin: 0 0px;
 }
 
 .button-group button.active {
