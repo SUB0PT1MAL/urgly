@@ -7,12 +7,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const milestones = document.querySelectorAll('.milestone');
     const resultDiv = document.getElementById('result');
     const generatedUrlTextarea = document.getElementById('generatedUrl');
-    const copyButton = document.getElementById('copyButton');
-    
+
+    const resultContainer = document.createElement('div');
+    resultContainer.id = 'resultContainer';
+    resultDiv.appendChild(resultContainer);
+
+    const copyButton = document.createElement('button');
+    copyButton.id = 'copyButton';
+    copyButton.textContent = 'COPY';
+    copyButton.onclick = copyToClipboard;
+    resultContainer.appendChild(copyButton);
+
     const urlPreview = document.createElement('div');
     urlPreview.id = 'urlPreview';
-    resultDiv.insertBefore(urlPreview, resultDiv.firstChild);
+    resultContainer.appendChild(urlPreview);
 
+    resultContainer.appendChild(generatedUrlTextarea);
+    
     function updateLongUrlControls() {
         longUrlControls.classList.toggle('inactive', shortUrlBtn.classList.contains('active'));
         updateUrlPreview();
@@ -88,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (longUrlBtn.classList.contains('active')) {
             const length = parseInt(urlLengthInput.value);
             const previewLength = Math.max(0, length - baseUrl.length);
-            //urlPreview.textContent = baseUrl + '█'.repeat(previewLength);
             urlPreview.textContent = baseUrl + 'X'.repeat(previewLength);
         } else {
             urlPreview.textContent = baseUrl;
