@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const milestones = document.querySelectorAll('.milestone');
     const resultDiv = document.getElementById('result');
     const generatedUrlTextarea = document.getElementById('generatedUrl');
+    const copyButton = document.getElementById('copyButton');
     
     const urlPreview = document.createElement('div');
     urlPreview.id = 'urlPreview';
@@ -94,6 +95,12 @@ document.addEventListener('DOMContentLoaded', function() {
         urlPreview.style.display = 'block';
         generatedUrlTextarea.style.display = 'none';
         resultDiv.style.display = 'flex';
+        autoResizePreview(urlPreview);
+    }
+
+    function autoResizePreview(element) {
+        element.style.height = 'auto';
+        element.style.height = element.scrollHeight + 'px';
     }
 
     milestones.forEach(milestone => {
@@ -148,10 +155,12 @@ async function processUrl() {
         const fullUrl = `${window.location.protocol}//${window.location.host}${result.new_url}`;
         const generatedUrlTextarea = document.getElementById('generatedUrl');
         const urlPreview = document.getElementById('urlPreview');
+        const copyButton = document.getElementById('copyButton');
         generatedUrlTextarea.value = fullUrl;
         autoResizeTextarea(generatedUrlTextarea);
         urlPreview.style.display = 'none';
         generatedUrlTextarea.style.display = 'block';
+        copyButton.classList.remove('inactive');
         document.getElementById('result').style.display = 'flex';
     } catch (error) {
         console.error('Error:', error);
@@ -168,14 +177,16 @@ function copyToClipboard() {
     const generatedUrl = document.getElementById('generatedUrl');
     const copyButton = document.getElementById('copyButton');
     
-    generatedUrl.select();
-    document.execCommand('copy');
-    
-    copyButton.textContent = 'COPIED';
-    copyButton.classList.add('copied');
-    
-    setTimeout(() => {
-        copyButton.textContent = 'COPY';
-        copyButton.classList.remove('copied');
-    }, 2000);
+    if (!copyButton.classList.contains('inactive')) {
+        generatedUrl.select();
+        document.execCommand('copy');
+        
+        copyButton.textContent = 'COPIED';
+        copyButton.classList.add('copied');
+        
+        setTimeout(() => {
+            copyButton.textContent = 'COPY';
+            copyButton.classList.remove('copied');
+        }, 2000);
+    }
 }

@@ -111,7 +111,6 @@ textarea {
     top: 0;
     left: 0;
     width: calc(100% - 100px);
-    height: 100%;
     padding: 10px;
     box-sizing: border-box;
     font-family: 'Press Start 2P', cursive;
@@ -125,6 +124,7 @@ textarea {
     background-color: #4040e0;
     border: 2px solid #ffffff;
     overflow: hidden;
+    min-height: 60px;
 }
 
 #copyButton {
@@ -137,6 +137,11 @@ textarea {
     min-width: 90px;
     padding: 10px 5px;
     height: 60px;
+}
+
+#copyButton.inactive {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 #copyButton.copied {
