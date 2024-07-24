@@ -99,6 +99,7 @@ textarea {
 #generatedUrl, #urlPreview {
     flex-grow: 1;
     margin-right: 100px;
+    margin-top: 0px;
     position: relative;
     min-height: 60px;
     resize: none;
@@ -107,6 +108,7 @@ textarea {
     box-sizing: border-box;
     width: calc(100% - 100px);
     padding: 10px;
+
     font-family: 'Press Start 2P', cursive;
     font-size: 16px;
     line-height: 1.5;
