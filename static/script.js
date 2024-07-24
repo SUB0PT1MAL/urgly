@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const urlPreview = document.createElement('div');
     urlPreview.id = 'urlPreview';
-    generatedUrlTextarea.parentNode.insertBefore(urlPreview, generatedUrlTextarea);
+    resultDiv.insertBefore(urlPreview, resultDiv.firstChild);
 
     function updateLongUrlControls() {
         longUrlControls.classList.toggle('inactive', shortUrlBtn.classList.contains('active'));

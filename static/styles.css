@@ -92,6 +92,7 @@ textarea {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    position: relative;
 }
 
 #generatedUrl {
@@ -109,7 +110,7 @@ textarea {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: calc(100% - 100px);
     height: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -123,6 +124,7 @@ textarea {
     z-index: 1;
     background-color: #4040e0;
     border: 2px solid #ffffff;
+    overflow: hidden;
 }
 
 #copyButton {
