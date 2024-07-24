@@ -205,7 +205,8 @@ textarea {
     margin-bottom: 5px;
     padding: 5px;
     border: 2px solid #ffffff;
-    background-color: #4040e0;
+    background-color: #ffffff;
+    color: #4040e0;
     transition: background-color 0.3s;
 }
 
@@ -214,8 +215,8 @@ textarea {
 }
 
 .milestone.active {
-    background-color: #ffffff;
-    color: #4040e0;
+    background-color: #4040e0;
+    color: #ffffff;
 }
 
 .button-group {
