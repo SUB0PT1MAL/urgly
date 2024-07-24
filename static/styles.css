@@ -95,7 +95,7 @@ textarea {
     position: relative;
 }
 
-#generatedUrl {
+#generatedUrl, #urlPreview {
     flex-grow: 1;
     margin-right: 10px;
     position: relative;
@@ -104,27 +104,21 @@ textarea {
     overflow: hidden;
     word-wrap: break-word;
     box-sizing: border-box;
-}
-
-#urlPreview {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: calc(100% - 100px);
     padding: 10px;
-    box-sizing: border-box;
     font-family: 'Press Start 2P', cursive;
     font-size: 16px;
     line-height: 1.5;
     white-space: pre-wrap;
     word-break: break-all;
+    background-color: #4040e0;
+    border: 2px solid #ffffff;
+}
+
+#urlPreview {
     color: rgba(255, 255, 255, 0.3);
     pointer-events: none;
     z-index: 1;
-    background-color: #4040e0;
-    border: 2px solid #ffffff;
-    overflow: hidden;
-    min-height: 60px;
 }
 
 #copyButton {
@@ -137,6 +131,9 @@ textarea {
     min-width: 90px;
     padding: 10px 5px;
     height: 60px;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 #copyButton.inactive {

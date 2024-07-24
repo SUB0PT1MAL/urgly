@@ -95,10 +95,10 @@ document.addEventListener('DOMContentLoaded', function() {
         urlPreview.style.display = 'block';
         generatedUrlTextarea.style.display = 'none';
         resultDiv.style.display = 'flex';
-        autoResizePreview(urlPreview);
+        autoResizeElement(urlPreview);
     }
 
-    function autoResizePreview(element) {
+    function autoResizeElement(element) {
         element.style.height = 'auto';
         element.style.height = element.scrollHeight + 'px';
     }
@@ -157,7 +157,7 @@ async function processUrl() {
         const urlPreview = document.getElementById('urlPreview');
         const copyButton = document.getElementById('copyButton');
         generatedUrlTextarea.value = fullUrl;
-        autoResizeTextarea(generatedUrlTextarea);
+        autoResizeElement(generatedUrlTextarea);
         urlPreview.style.display = 'none';
         generatedUrlTextarea.style.display = 'block';
         copyButton.classList.remove('inactive');
@@ -168,9 +168,9 @@ async function processUrl() {
     }
 }
 
-function autoResizeTextarea(textarea) {
-    textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
+function autoResizeElement(element) {
+    element.style.height = 'auto';
+    element.style.height = element.scrollHeight + 'px';
 }
 
 function copyToClipboard() {
