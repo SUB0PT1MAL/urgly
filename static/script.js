@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlLengthSlider = document.getElementById('urlLengthSlider');
     const urlLengthInput = document.getElementById('urlLengthInput');
     const milestones = document.querySelectorAll('.milestone');
-    const originalUrlInput = document.getElementById('originalUrl');
+    const resultDiv = document.getElementById('result');
     
     const urlPreview = document.createElement('div');
     urlPreview.id = 'urlPreview';
-    originalUrlInput.parentNode.insertBefore(urlPreview, originalUrlInput.nextSibling);
+    resultDiv.insertBefore(urlPreview, resultDiv.firstChild);
 
     function updateLongUrlControls() {
         longUrlControls.classList.toggle('inactive', shortUrlBtn.classList.contains('active'));
@@ -87,11 +87,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const length = parseInt(urlLengthInput.value);
             const previewLength = Math.max(0, length - baseUrl.length);
             urlPreview.textContent = baseUrl + '█'.repeat(previewLength);
-            urlPreview.style.display = 'block';
         } else {
             urlPreview.textContent = baseUrl;
-            urlPreview.style.display = 'block';
         }
+        urlPreview.style.display = 'block';
+        resultDiv.style.display = 'flex';
     }
 
     milestones.forEach(milestone => {
@@ -105,25 +105,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    originalUrlInput.addEventListener('input', function() {
-        if (this.value) {
-            urlPreview.style.display = 'none';
-        } else {
-            updateUrlPreview();
-        }
-    });
-
     updateSliderColor(urlLengthSlider.value);
     updateMilestones(urlLengthSlider.value);
     updateLongUrlControls();
     updateUrlPreview();
 });
-
-
-function autoResizeTextarea(textarea) {
-    textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
-}
 
 async function processUrl() {
     const originalUrl = document.getElementById('originalUrl').value;
@@ -136,7 +122,7 @@ async function processUrl() {
     }
 
     if (urlType === 'long') {
-        urlLength = Math.max(100, parseInt(urlLength) - 34); // substract 34 to take in to account the domain and path
+        urlLength = Math.max(100, parseInt(urlLength) - 34);
     }
 
     const data = {
@@ -161,11 +147,17 @@ async function processUrl() {
         const generatedUrlTextarea = document.getElementById('generatedUrl');
         generatedUrlTextarea.value = fullUrl;
         autoResizeTextarea(generatedUrlTextarea);
+        document.getElementById('urlPreview').style.display = 'none';
         document.getElementById('result').style.display = 'flex';
     } catch (error) {
         console.error('Error:', error);
         alert('An error occurred. Please try again.');
     }
+}
+
+function autoResizeTextarea(textarea) {
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
 }
 
 function copyToClipboard() {
