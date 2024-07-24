@@ -92,22 +92,34 @@ textarea {
     margin-top: 20px;
 }
 
-#resultContainer {
+#copyButton {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+#urlBox {
     position: relative;
     width: 100%;
 }
 
-#copyButton {
-    width: 100%;
-    margin-bottom: 0;
-    border-bottom: none;
-}
-
 #generatedUrl, #urlPreview {
     width: 100%;
-    margin-right: 0;
-    margin-top: 0;
-    border-top: none;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-all;
+    border: 2px solid #ffffff;
+}
+
+#urlPreview {
+    color: rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+    z-index: 1;
 }
 
 #copyButton.inactive {
@@ -119,13 +131,6 @@ textarea {
     background-color: #4040e0;
     color: #ffffff;
     border: 2px solid #ffffff;
-    border-bottom: none;
-}
-
-#urlPreview {
-    color: rgba(255, 255, 255, 0.3);
-    pointer-events: none;
-    z-index: 1;
 }
 
 #longUrlControls {

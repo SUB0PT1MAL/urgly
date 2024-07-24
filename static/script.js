@@ -7,23 +7,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const milestones = document.querySelectorAll('.milestone');
     const resultDiv = document.getElementById('result');
     const generatedUrlTextarea = document.getElementById('generatedUrl');
-
-    const resultContainer = document.createElement('div');
-    resultContainer.id = 'resultContainer';
-    resultDiv.appendChild(resultContainer);
-
-    const copyButton = document.createElement('button');
-    copyButton.id = 'copyButton';
-    copyButton.textContent = 'COPY';
-    copyButton.onclick = copyToClipboard;
-    resultContainer.appendChild(copyButton);
-
+    const copyButton = document.getElementById('copyButton');
+    
     const urlPreview = document.createElement('div');
     urlPreview.id = 'urlPreview';
-    resultContainer.appendChild(urlPreview);
+    resultDiv.insertBefore(urlPreview, resultDiv.firstChild);
 
-    resultContainer.appendChild(generatedUrlTextarea);
-    
     function updateLongUrlControls() {
         longUrlControls.classList.toggle('inactive', shortUrlBtn.classList.contains('active'));
         updateUrlPreview();
@@ -177,11 +166,6 @@ async function processUrl() {
         console.error('Error:', error);
         alert('An error occurred. Please try again.');
     }
-}
-
-function autoResizeElement(element) {
-    element.style.height = 'auto';
-    element.style.height = (element.scrollHeight + 2) + 'px';
 }
 
 function copyToClipboard() {
