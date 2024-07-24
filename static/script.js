@@ -6,10 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlLengthInput = document.getElementById('urlLengthInput');
     const milestones = document.querySelectorAll('.milestone');
     const resultDiv = document.getElementById('result');
+    const generatedUrlTextarea = document.getElementById('generatedUrl');
     
     const urlPreview = document.createElement('div');
     urlPreview.id = 'urlPreview';
-    resultDiv.insertBefore(urlPreview, resultDiv.firstChild);
+    generatedUrlTextarea.parentNode.insertBefore(urlPreview, generatedUrlTextarea);
 
     function updateLongUrlControls() {
         longUrlControls.classList.toggle('inactive', shortUrlBtn.classList.contains('active'));
@@ -91,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
             urlPreview.textContent = baseUrl;
         }
         urlPreview.style.display = 'block';
+        generatedUrlTextarea.style.display = 'none';
         resultDiv.style.display = 'flex';
     }
 
@@ -145,9 +147,11 @@ async function processUrl() {
         }
         const fullUrl = `${window.location.protocol}//${window.location.host}${result.new_url}`;
         const generatedUrlTextarea = document.getElementById('generatedUrl');
+        const urlPreview = document.getElementById('urlPreview');
         generatedUrlTextarea.value = fullUrl;
         autoResizeTextarea(generatedUrlTextarea);
-        document.getElementById('urlPreview').style.display = 'none';
+        urlPreview.style.display = 'none';
+        generatedUrlTextarea.style.display = 'block';
         document.getElementById('result').style.display = 'flex';
     } catch (error) {
         console.error('Error:', error);
