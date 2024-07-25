@@ -55,7 +55,7 @@ input[type="number"]::-webkit-inner-spin-button {
 button {
     background-color: #ffffff;
     color: #4040e0;
-    border: none;
+    border: 2px solid #ffffff;
     cursor: pointer;
 }
 
@@ -89,7 +89,7 @@ textarea {
 }
 
 #result {
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 #generatedUrl, #urlPreview {
@@ -115,8 +115,8 @@ textarea {
 }
 
 #copyButton{
-    margin-top: 10px;
-    margin-bottom: 0px;
+    margin-top: 25px;
+    margin-bottom: -2px;
 }
 
 #copyButton.inactive {
@@ -176,7 +176,7 @@ textarea {
 #milestones {
     list-style-type: none;
     padding: 0;
-    margin: 10px 0;
+    margin: 0px;
     display: flex;
     justify-content: space-between;
 }
@@ -203,7 +203,7 @@ textarea {
 .button-group {
     display: flex;
     justify-content: space-between;
-    margin: 20px 0;
+    margin: 0px 0;
 }
 
 .button-group button {
