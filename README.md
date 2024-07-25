@@ -1,5 +1,5 @@
 URL Overflow is a web application that allows users to create both short and long custom URLs. 
-Originally created to tease my freind's twitch chat with links that spanned the whole 500 limit.
+Originally created to tease my friend's twitch chat with links that spanned the whole 500 limit.
 
 ![Web UI](https://github.com/SUB0PT1MAL/IconsAndArt/blob/main/WebUI.png)
 
