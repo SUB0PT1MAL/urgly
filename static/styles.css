@@ -178,7 +178,7 @@ textarea {
 #milestones {
     list-style-type: none;
     padding: 0;
-    margin-bottom: -6px;
+    margin-bottom: -8px;
     display: flex;
     justify-content: space-between;
 }

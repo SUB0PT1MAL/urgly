@@ -182,7 +182,7 @@ function copyToClipboard() {
         generatedUrl.select();
         document.execCommand('copy');
         
-        copyButton.textContent = 'COPIED';
+        copyButton.textContent = 'URL COPIED';
         copyButton.classList.add('copied');
         
         setTimeout(() => {
