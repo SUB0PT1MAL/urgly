@@ -90,6 +90,7 @@ textarea {
 
 #result {
     margin-top: 20px;
+<<<<<<< HEAD
 }
 
 #result {
@@ -107,12 +108,57 @@ textarea {
     width: 100%;
     margin-right: 0;
     margin-top: 0;
+=======
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    position: relative;
+    padding-top: 10px;
+}
+
+#generatedUrl, #urlPreview {
+    flex-grow: 1;
+    margin-right: 100px;
+    margin-top: 0px;
+    position: relative;
+    min-height: 60px;
+    resize: none;
+    overflow: hidden;
+    word-wrap: break-word;
+    box-sizing: border-box;
+    width: calc(100% - 100px);
+    padding: 10px;
+
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-all;
+    border: 2px solid #ffffff;
+>>>>>>> parent of cd1b324 (fp)
 }
 
 #urlPreview {
     color: rgba(255, 255, 255, 0.3);
     pointer-events: none;
     z-index: 1;
+<<<<<<< HEAD
+=======
+}
+
+#copyButton {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    min-width: 90px;
+    padding: 10px 5px;
+    height: 60px;
+    position: absolute;
+    right: 0;
+    top: 0;
+>>>>>>> parent of cd1b324 (fp)
 }
 
 #copyButton.inactive {
