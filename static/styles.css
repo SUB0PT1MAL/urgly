@@ -244,7 +244,7 @@ textarea {
     height: 100%;
     pointer-events: none;
     animation: scanline 10s linear infinite;
-    z-index: 1; /* Added to ensure the effect is above the screen */
+    z-index: 1;
 }
 
 footer {
@@ -256,11 +256,9 @@ footer {
     max-width: 800px;
     display: flex;
     justify-content: space-around;
-    padding: 10px;
     background-color: #4040e0;
     border-top: 2px solid #ffffff;
     box-sizing: border-box;
-    z-index: 1; /* Added to ensure the footer is above the scanline effect */
 }
 
 footer button {
@@ -271,7 +269,7 @@ footer button {
     color: #4040e0;
     border: 2px solid #ffffff;
     cursor: pointer;
-    font-size: 0.8em;
+    font-size: 16px;
 }
 
 footer button:hover {
