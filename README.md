@@ -15,6 +15,8 @@ Originally created to tease my freind's twitch chat with links that spanned the 
 
 You can run it as-is or use a container that you can either create using the Dockerfile in this repo or use the image on docker hub (sub0pt1mal/urgly:latest).
 
+Some features are hardcoded to my domain, like the character limit taking in to account the lenght of it, and the preview containing my url, you will have to manually change the code for that.
+
 You will need a postgresql database to store and retrieve the generated urls and set up the following variables:
 
 - `DATABASE_URL`: The URL for your postgresql connection (postgresql://user:password@ip:port)
