@@ -92,28 +92,21 @@ textarea {
     margin-top: 20px;
 }
 
+#result {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
 #copyButton {
     width: 100%;
     margin-bottom: 0;
 }
 
-#urlBox {
-    position: relative;
-    width: 100%;
-}
-
 #generatedUrl, #urlPreview {
     width: 100%;
-    margin: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 16px;
-    line-height: 1.5;
-    white-space: pre-wrap;
-    word-break: break-all;
-    border: 2px solid #ffffff;
+    margin-right: 0;
+    margin-top: 0;
 }
 
 #urlPreview {
