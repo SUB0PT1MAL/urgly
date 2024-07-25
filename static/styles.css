@@ -14,11 +14,13 @@ body {
     overflow: auto;
     padding: 20px;
     box-sizing: border-box;
+    position: relative; /* Added */
 }
 
 .container {
     max-width: 800px;
     margin: 0 auto;
+    padding-bottom: 60px;
 }
 
 h1 {
@@ -242,18 +244,23 @@ textarea {
     height: 100%;
     pointer-events: none;
     animation: scanline 10s linear infinite;
+    z-index: 1; /* Added to ensure the effect is above the screen */
 }
 
 footer {
     position: fixed;
     bottom: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
+    max-width: 800px;
     display: flex;
     justify-content: space-around;
     padding: 10px;
     background-color: #4040e0;
     border-top: 2px solid #ffffff;
+    box-sizing: border-box;
+    z-index: 1; /* Added to ensure the footer is above the scanline effect */
 }
 
 footer button {
@@ -274,10 +281,4 @@ footer button:hover {
 #emailButton.copied {
     background-color: #4040e0;
     color: #ffffff;
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding-bottom: 60px;
 }
