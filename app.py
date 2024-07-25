@@ -14,6 +14,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Domain configuration
 DOMAIN = os.environ.get('DOMAIN', 'localhost:5000')
 
+# Get contact email and GitHub repo from environment variables
+CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL', 'default@example.com')
+GITHUB_REPO = os.environ.get('GITHUB_REPO', 'https://github.com/default/repo')
+
 db = SQLAlchemy(app)
 
 class URL(db.Model):
@@ -28,7 +32,7 @@ def generate_random_string(length):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', contact_email=CONTACT_EMAIL, github_repo=GITHUB_REPO)
 
 @app.route('/static/<path:path>')
 def send_static(path):

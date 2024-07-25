@@ -191,3 +191,20 @@ function copyToClipboard() {
         }, 2000);
     }
 }
+
+function copyEmail() {
+    const emailButton = document.getElementById('emailButton');
+    const email = emailButton.textContent;
+    
+    navigator.clipboard.writeText(email).then(() => {
+        emailButton.textContent = 'EMAIL COPIED';
+        emailButton.classList.add('copied');
+        
+        setTimeout(() => {
+            emailButton.textContent = email;
+            emailButton.classList.remove('copied');
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy email: ', err);
+    });
+}

@@ -243,3 +243,41 @@ textarea {
     pointer-events: none;
     animation: scanline 10s linear infinite;
 }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #4040e0;
+    border-top: 2px solid #ffffff;
+}
+
+footer button {
+    font-family: 'Press Start 2P', cursive;
+    padding: 10px;
+    margin: 0;
+    background-color: #ffffff;
+    color: #4040e0;
+    border: 2px solid #ffffff;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+footer button:hover {
+    background-color: #a0a0ff;
+}
+
+#emailButton.copied {
+    background-color: #4040e0;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 60px;
+}
