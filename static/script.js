@@ -169,6 +169,11 @@ async function processUrl() {
     }
 }
 
+function autoResizeElement(element) {
+    element.style.height = 'auto';
+    element.style.height = (element.scrollHeight + 2) + 'px';
+}
+
 function copyToClipboard() {
     const generatedUrl = document.getElementById('generatedUrl');
     const copyButton = document.getElementById('copyButton');
