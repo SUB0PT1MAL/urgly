@@ -197,6 +197,7 @@ textarea {
     border: 2px solid #ffffff;
     background-color: #ffffff;
     color: #4040e0;
+    font-size: 13px;
     transition: background-color 0.3s;
 }
 
