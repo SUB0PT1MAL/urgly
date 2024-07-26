@@ -272,12 +272,18 @@ footer button {
     padding-bottom: 7px;
     padding-right: 5px;
     padding-left: 5px;
-    margin: 0;
+    margin: 3px;
     background-color: #ffffff;
     color: #4040e0;
     border: 2px solid #ffffff;
     cursor: pointer;
     font-size: 11px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: flex-end;
+    justify-content: space-around;
+    align-items: center;
 }
 
 footer button:hover {
