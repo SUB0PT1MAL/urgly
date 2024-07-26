@@ -26,8 +26,8 @@ body {
 
 h1 {
     text-align: center;
-    font-size: 1.2em;
     margin-bottom: 20px;
+    font-size: clamp(16px, 3.9vw, 32px);
 }
 
 input[type="text"], input[type="number"], button, textarea {
