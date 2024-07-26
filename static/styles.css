@@ -264,13 +264,13 @@ footer {
 
 footer button {
     font-family: 'Press Start 2P', cursive;
-    padding: 10px;
+    padding: 7px;
     margin: 0;
     background-color: #ffffff;
     color: #4040e0;
     border: 2px solid #ffffff;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 13px;
 }
 
 footer button:hover {
